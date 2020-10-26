@@ -63,10 +63,10 @@ def add_new_artwork(): # Create Add New Artwork function
 
 def search_by_artist(): # Create Search by Artist function
     # Prompt user for artist name
-    search_artist = ui.get_non_empty_string(input(
-        "What is the name of the artist whose available artworks you want to see? "))
+    search_artist = ui.get_non_empty_string("What is the name of the artist whose available artworks you want to see? ")
     # Update database with values
-    db.search_by_artist(search_artist, )
+    artwork = db.search_by_artist(search_artist, )
+    print('The artwork for this artist is, ', artwork)  # todo refine this and print more neatly
 
 def delete_artwork(): # Create Delete Artwork function
     # Prompt user for artwork to be deleted
@@ -77,10 +77,11 @@ def delete_artwork(): # Create Delete Artwork function
 
 def available_artwork(): # Create Available Artwork function
     # Prompt user for artist's name
-    available_artist = ui.get_non_empty_string(input(
-        "What is the name of the artist whose available artworks you want to see? "))
+    available_artist = ui.get_non_empty_string("What is the name of the artist whose available artworks you want to see? ")
     # Update database with values
-    db.available_artwork(available_artist, )
+    artwork = db.available_artwork(available_artist, )
+    print('The artwork for this artist is, ', artwork)  # todo refine this and print more neatly
+
 
 def good_bye(): # Create good-bye/quit function
     print("Good-bye!")

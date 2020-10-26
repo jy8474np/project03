@@ -35,8 +35,9 @@ def add_new_artwork(new_artwork, new_artist, new_price, new_avaiability):
 def search_by_artist(search_artist):
     with sqlite3.connect(database) as conn:
         results = conn.execute("SELECT artwork_name FROM artworks WHERE artist_name like ?", (search_artist, ))
-        return(results)
+        
     conn.close()
+    return results  # return at the end of your functions - close the DB first 
 
 # Using values from main.py update database with the name of the artwork to be deleted
 def delete_artwork(deleted_artwork):
@@ -47,7 +48,9 @@ def delete_artwork(deleted_artwork):
 # Using values from main.py update database with an artist's available artwork
 def available_artwork(available_artist):
     with sqlite3.connect(database) as conn:
-        results = conn.execute("SELECT artwork_name FROM artworks WHERE artist_name = ? AND available IS TRUE", (available_artist, ))
-        return(results)
-    conn.close()
+        cursor = conn.execute("SELECT artwork_name FROM artworks WHERE artist_name = ? AND available IS TRUE", (available_artist, ))
 
+    results = cursor.fetchall()
+    conn.close()
+    # results is a sqlite cursor object. fetchall() creates a tuple of data.
+    return results

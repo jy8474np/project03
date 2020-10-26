@@ -10,7 +10,7 @@ def main(): # Create main function
         print('Please select an option from the menu below: (Enter "Q" to Quit)')
         print("1. Add Artist\n2. Add Artwork\n3. Search by Artist\n4. Delete Artwork\n5. Display Artist's Work\n6. Change Artwork Availablity\n7. Display Artist's Available Artwork\n")
 
-        option = ui.get_non_empty_string(input("Enter your desired option: "))
+        option = ui.get_non_empty_string("Enter your desired option: ")
 
         # Explain user options
         if option == "1":
@@ -28,12 +28,12 @@ def main(): # Create main function
         # Provide option for user to quit
         elif option == "q" or option == "Q":
             good_bye()
-        break
+            break    # indent this so it's part of the logic for the quit option
 
 def add_new_artist(): # Create Add New Artist function
     # Prompt user for new artist's name
-    new_artist_name = ui.get_non_empty_string(input(
-        "What is the name of the artist you would like to add? "))
+    # just provide the question
+    new_artist_name = ui.get_non_empty_string("What is the name of the artist you would like to add? ")
     # Prompt user for new artist's e-mail address
     new_artist_email = ui.get_non_empty_string(
         input("Please enter the e-mail address of the artist you would like to add: "))
@@ -63,10 +63,10 @@ def add_new_artwork(): # Create Add New Artwork function
 
 def search_by_artist(): # Create Search by Artist function
     # Prompt user for artist name
-    search_artist = ui.get_non_empty_string(input(
-        "What is the name of the artist whose available artworks you want to see? "))
+    search_artist = ui.get_non_empty_string("What is the name of the artist whose available artworks you want to see? ")
     # Update database with values
-    db.search_by_artist(search_artist, )
+    artwork = db.search_by_artist(search_artist, )
+    print('The artwork for this artist is, ', artwork)  # todo refine this and print more neatly
 
 def delete_artwork(): # Create Delete Artwork function
     # Prompt user for artwork to be deleted
@@ -77,10 +77,11 @@ def delete_artwork(): # Create Delete Artwork function
 
 def available_artwork(): # Create Available Artwork function
     # Prompt user for artist's name
-    available_artist = ui.get_non_empty_string(input(
-        "What is the name of the artist whose available artworks you want to see? "))
+    available_artist = ui.get_non_empty_string("What is the name of the artist whose available artworks you want to see? ")
     # Update database with values
-    db.available_artwork(available_artist, )
+    artwork = db.available_artwork(available_artist, )
+    print('The artwork for this artist is, ', artwork)  # todo refine this and print more neatly
+
 
 def good_bye(): # Create good-bye/quit function
     print("Good-bye!")

@@ -1,7 +1,9 @@
 # Ensure input is not empty
 def get_non_empty_string(question):
-    while len(question) != 0 or question !=" ": # Do not allow any string input to be less than one character or blank
-        return input(question)
+    answer = ''
+    while len(answer) == 0: # Do not allow any string input to be less than one character or blank
+        answer = input(question).strip()  # remove empty space, so ' ' will become an empty string
+    return answer
 
 # Ensure input is a REAL number
 def get_positive_float(question):
